@@ -28,27 +28,24 @@ The system provides 7–60 day capacity forecasts, interactive visual dashboards
 	•	notebooks/ contains exploratory analysis and model development notebooks
 	•	Root directory includes production-ready Streamlit app
 
-    📂 Project Structure
     
+### 📁 Project Structure
+
+```text
 carecast_hospital_forecasting/
-│
 ├── data/
 │   ├── raw/                # Original datasets (ignored in .gitignore)
-│   └── processed/          # Cleaned datasets (ignored)
-│
+│   └── processed/          # Cleaned datasets
 ├── notebooks/
 │   └── 01_explore_and_clean.ipynb
-│
 ├── src/
 │   ├── preprocess.py       # Cleaning, anomaly handling
 │   ├── forecast.py         # SARIMAX forecasting engine
 │   └── visualize.py        # Plotting and KPI helper functions
-│
 ├── streamlit_app.py        # Main dashboard application
 ├── requirements.txt        # Python dependencies
 ├── LICENSE
-├── README.md
-└── .gitignore
+└── README.md
 
 📥 Datasets
 
