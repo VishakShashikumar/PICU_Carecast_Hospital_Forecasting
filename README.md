@@ -1,39 +1,119 @@
-# CareCast – Pediatric ICU Bed Utilization Forecasting
+🏥 CareCast — Pediatric ICU Capacity Forecasting System
 
-CareCast is an interactive forecasting app that helps hospital operations teams anticipate **Pediatric ICU (PICU) bed utilization** over the next 7–60 days.  
-It combines **time-series modeling**, **scenario analysis**, and a lightweight **Streamlit** UI so clinicians and planners can quickly stress-test capacity under different demand shocks.
+CareCast is a data-driven forecasting system designed to analyze historical hospital utilization trends and predict Pediatric ICU (PICU) bed demand across the United States.
+The system provides 7–60 day capacity forecasts, interactive visual dashboards, and anomaly-aware time-series insights for operational planning.
 
----
+⸻
 
-## 🔍 Key Features
+🚀 Key Features
 
-- **End-to-end time-series pipeline**
-  - SARIMAX models for short- and medium-term PICU bed utilization forecasts
-  - Automated data cleaning, resampling, and outlier handling
-  - Rolling retrain-ready structure for future extension
+📊 Forecasting Engine
+	•	SARIMAX-based time-series model
+	•	Handles missing values, anomalies, and irregular reporting
+	•	Generates short-term and medium-term PICU utilization forecasts
 
-- **Interactive Streamlit app**
-  - KPI cards for current occupancy, forecasted utilization, and risk flags
-  - Sparklines and trend charts for historical vs forecasted demand
-  - Sliders to simulate demand/capacity shocks (e.g., +20% admissions, −10% staffed beds)
-  - State-level PICU availability and utilization overview
+🗺️ Interactive Streamlit Dashboard
+	•	KPI cards (current occupancy, forecast range, % change)
+	•	State-level capacity maps
+	•	Trend visualizations (historical & predicted)
+	•	CSV upload option for custom datasets
 
-- **Production-friendly structure**
-  - `requirements.txt` for reproducible environments
-  - Clean separation of **data**, **notebooks**, and **app code**
-  - MIT-licensed for reuse and extension
+🛠️ Automated Data Pipeline
+	•	Data cleaning (outlier removal, NA imputation, smoothing)
+	•	Dataset versioning
+	•	Support for multiple CSV inputs
 
----
+📁 Modular Code Structure
+	•	src/ contains forecasting logic, preprocessing utilities, and plotting functions
+	•	notebooks/ contains exploratory analysis and model development notebooks
+	•	Root directory includes production-ready Streamlit app
 
-## 🗂 Project Structure
-
-```bash
-carecast_hospital_forecasting/
-├── data/                     # (ignored by Git) raw & processed datasets live here locally
+    📂 Project Structure
+    carecast_hospital_forecasting/
+│
+├── data/
+│   ├── raw/                # Original datasets (ignored in .gitignore)
+│   └── processed/          # Cleaned datasets (ignored)
+│
 ├── notebooks/
-│   └── 01_explore_and_clean.ipynb   # EDA, cleaning, and feature engineering
-├── src/                      # (optional) reusable utilities / modeling helpers
-├── streamlit_app.py          # Main Streamlit application
-├── requirements.txt          # Python dependencies
-├── LICENSE                   # MIT License
-└── README.md                 # Project documentation
+│   └── 01_explore_and_clean.ipynb
+│
+├── src/
+│   ├── preprocess.py       # Cleaning, anomaly handling
+│   ├── forecast.py         # SARIMAX forecasting engine
+│   └── visualize.py        # Plotting and KPI helper functions
+│
+├── streamlit_app.py        # Main dashboard application
+├── requirements.txt        # Python dependencies
+├── LICENSE
+├── README.md
+└── .gitignore
+
+📥 Datasets
+
+This project uses publicly available HHS datasets, including:
+	•	Hospital Utilization (State-Level Time Series)
+	•	Facility-Level Capacity Data
+	•	Contains fields such as staffed beds, occupied ICU beds, pediatric availability, etc.
+
+Large datasets are not stored in the repo due to GitHub’s 100MB limit.
+Users may place their own CSVs inside data/raw/.
+
+⸻
+
+🧠 Modeling Approach
+
+Cleaning & Preprocessing
+	•	Forward/backward fill for missing values
+	•	Rolling mean smoothing for noisy series
+	•	Outlier clipping based on IQR thresholds
+	•	Weekly aggregation to stabilize reporting cycles
+
+Forecasting
+	•	Seasonal ARIMA (SARIMAX)
+	•	Trend + seasonal + exogenous signal support
+	•	Automatic order selection during experimentation
+
+Outputs
+	•	Forecasted ICU utilization
+	•	Confidence intervals
+	•	Anomaly flags
+	•	KPI summaries
+
+🖥️ How to Run Locally
+
+1️⃣ Clone the repository
+git clone https://github.com/VishakShashikumar/PICU_CareCast_Hospital_Forecasting.git
+cd PICU_CareCast_Hospital_Forecasting
+2️⃣ Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate   # macOS / Linux
+venv\Scripts\activate      # Windows
+3️⃣ Install dependencies
+pip install -r requirements.txt
+4️⃣ Add your datasets
+Place your CSV files into:
+data/raw/
+Expected filenames:
+hospital_utilization_state_timeseries.csv
+hospital_capacity.csv
+5️⃣ Run the Streamlit App
+streamlit run streamlit_app.py
+
+The UI will appear at:
+
+👉 http://localhost:8501
+
+
+🌟 Future Enhancements
+	•	LSTM / Prophet model comparison
+	•	State-by-state model auto-selection
+	•	Real-time API ingestion
+	•	Automated weekly retraining pipeline
+	•	Cloud deployment (AWS / Streamlit Cloud)
+
+⸻
+
+📜 License
+
+This project is released under the MIT License, enabling full use for academic, research, and organizational purposes.
