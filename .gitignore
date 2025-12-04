@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.env/
+
+# OS files
+.DS_Store
+
+# Streamlit logs
+logs/
+
+# Ignore ALL data + CSVs (so big hospital files are NOT tracked)
+data/
+*.csv
