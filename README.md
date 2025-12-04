@@ -29,7 +29,8 @@ The system provides 7–60 day capacity forecasts, interactive visual dashboards
 	•	Root directory includes production-ready Streamlit app
 
     📂 Project Structure
-    carecast_hospital_forecasting/
+    
+carecast_hospital_forecasting/
 │
 ├── data/
 │   ├── raw/                # Original datasets (ignored in .gitignore)
