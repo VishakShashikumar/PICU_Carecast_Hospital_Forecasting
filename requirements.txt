@@ -6,3 +6,4 @@ statsmodels
 streamlit
 seaborn
 plotly
+openai>=1.40.0
