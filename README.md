@@ -1,3 +1,7 @@
+### 🚀 Live Demo  
+👉 **CareCast Streamlit App:**  
+https://carecasthospitalforecasting-8qmkkseyqqjzirmttukwvw.streamlit.app/
+
 🏥 CareCast — Pediatric ICU Capacity Forecasting System
 
 CareCast is a data-driven forecasting system designed to analyze historical hospital utilization trends and predict Pediatric ICU (PICU) bed demand across the United States.
